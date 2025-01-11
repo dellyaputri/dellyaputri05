@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dellya Putri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #ff0077;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header.scrolled {
+            background-color: rgba(255, 0, 119, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-weight: 400;
+            font-size: 1.5rem;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            background: #ff0077;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s;
+        }
+        .menu a:hover {
+            background: white;
+            color: #ff0077;
+            border-radius: 5px;
+        }
+        .hamburger {
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: white;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        h2 {
+            color: #ff0077;
+            margin-top: 20px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .skill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .skill-logo {
+            width: 50px;
+            height: 50px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .skill-logo img {
+            width: 30px;
+            height: 30px;
+        }
+        .progress-container {
+            flex: 1;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .progress-bar > div {
+            height: 20px;
+            background-color: #ff0077;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            transition: width 1s ease-in-out;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 0; /* Hapus margin atas untuk footer */
+}
+ /* Gaya umum untuk gambar */
+        img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease; /* Transisi halus */
+        }
+
+        /* Media query untuk perangkat mobile */
+        @media (max-width: 768px) {
+            /* Menambahkan efek zoom saat gambar diklik di mobile */
+            img {
+                transition: transform 0.25s ease;
+            }
+
+            /* Pop-up container yang disembunyikan secara default */
+            #popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            /* Gambar di dalam pop-up */
+            #popup img {
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 10px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+
+
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #ff0077;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header.scrolled {
+            background-color: rgba(255, 0, 119, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-weight: 400;
+            font-size: 1.5rem;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            background: #ff0077;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            transition: background 0.3s;
+        }
+        .menu a:hover {
+            background: white;
+            color: #ff0077;
+            border-radius: 5px;
+        }
+        .hamburger {
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: white;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        h2 {
+            color: #ff0077;
+            margin-top: 20px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .skill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .skill-logo {
+            width: 50px;
+            height: 50px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .skill-logo img {
+            width: 30px;
+            height: 30px;
+        }
+        .progress-container {
+            flex: 1;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .progress-bar > div {
+            height: 20px;
+            background-color: #ff0077;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            transition: width 1s ease-in-out;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+		
+		/* Gambar normal untuk desktop */
+img {
+    width: 100%;
+    height: auto;
+}
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-images {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+   /* Add this CSS for the pop-up */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .popup .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Portfolio section styles */
+        .portfolio-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .portfolio-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .portfolio-images img:hover {
+            transform: scale(1.05);
+        }
+
+html {
+    scroll-behavior: smooth;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    margin-bottom: 0; /* Hapus margin bawah */
+}
+
+.social-button {
+    display: inline-block;
+}
+
+.social-icon {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Adjust the size as needed */
+    transition: transform 0.3s ease;
+}
+
+.social-button:hover .social-icon {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+/* Change the cursor to pink color on hover */
+.social-button:hover {
+    cursor: pointer;
+    filter: brightness(1.3); /* Slight effect to brighten on hover */
+}
+
+
+/* Portofolio dan gambar */
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.portfolio-item {
+    position: relative;
+    width: 300px;
+    height: 200px; /* Atur ukuran gambar */
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Overlay hitam transparan */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Latar belakang hitam transparan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+/* Teks "Click" */
+.click-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Efek saat hover gambar */
+.portfolio-item:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* Pop-up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Isi pop-up */
+.popup-content {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Gambar dalam pop-up */
+.popup-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh; /* Membatasi tinggi gambar agar tidak melebihi tampilan */
+    object-fit: contain;
+}
+
+/* Tombol close */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 30%;
+}
+
+/* Efek overlay pada gambar portofolio */
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    justify-items: center; /* Ini untuk memastikan gambar berada di tengah grid */
+    align-items: center; /* Mengatur gambar untuk sejajar vertikal di tengah */
+}
+
+.portfolio-item {
+    position: relative;
+    width: 100%; /* Pastikan ini mengikuti lebar kontainer */
+    max-width: 300px; /* Ukuran maksimal gambar */
+    height: auto;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Ini akan memastikan gambar tetap proporsional */
+    transition: transform 0.3s;
+}
+
+.portfolio-images img:hover {
+    transform: scale(1.05);
+}
+
+.click-text {
+    color: white;
+    font-size: 20px;
+}
+
+.photo-container {
+  text-align: center; /* Agar foto dan deskripsi berada di tengah */
+}
+
+.photo {
+  width: 100%; /* Allow the image to scale to the container's width */
+  max-width: 300px; /* Optional: limit the maximum width on larger screens */
+  height: auto; /* Maintain the aspect ratio */
+  object-fit: contain; /* Ensure image scales without distortion */
+  margin-bottom: 20px; /* Add space below the image */
+}
+
+/* Pop-up container */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-image {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="navbar">
+        <h1>Dellya Putri</h1>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="menu" id="menu">
+            <a href="#description">Description</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</header>
+
+<div class="container" id="description">
+
+    <!-- Menambahkan foto di atas deskripsi -->
+    <div class="photo-container">
+        <img src="images_5.jpg" alt="Your Photo" class="photo" id="image" />
+    </div>
+
+    <!-- Pop-up untuk menampilkan gambar besar -->
+    <div id="popup" class="popup">
+        <span class="close" id="closePopup">&times;</span>
+        <img src="images_5.jpg" alt="Pop-up Gambar" id="popupImage" class="popup-image">
+    </div>
+	
+    <h2 data-aos="fade-in">Hi, I'm Dellya, a Tax Specialist from Jakarta</h2>
+    <p data-aos="fade-in" data-aos-delay="200">“Currently 25 years old with expertise in Taxation and Accounting. I hold a degree in Accounting from the Indonesia Banking School.I am passionate about providing accurate and impactful financial solutions, especially in corporate tax management, to support your business success. Thank you for visiting my personal website"</p>
+
+    <h2 data-aos="fade-in" id="skills">Skills</h2>
+
+    <div class="skills-grid" data-aos="fade-in" data-aos-delay="600">
+        <div class="skill">
+            <div class="skill-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/3850/3850596.png" alt="Tax Regulations">
+            </div>
+            <div class="progress-container">
+                <p>Tax Regulations</p>
+                <div class="progress-bar">
+                    <div style="width: 80%;" data-value="80">80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="Tax Reporting">
+            </div>
+            <div class="progress-container">
+                <p>Tax Reporting</p>
+                <div class="progress-bar">
+                    <div style="width: 80%;" data-value="80">80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/3664/3664986.png" alt="Tax Reconciliation">
+            </div>
+            <div class="progress-container">
+                <p>Tax Reconciliation</p>
+                <div class="progress-bar">
+                    <div style="width: 80%;" data-value="80">80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Audit Support">
+            </div>
+            <div class="progress-container">
+                <p>Audit Support</p>
+                <div class="progress-bar">
+                    <div style="width: 80%;" data-value="80">80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/136/136532.png" alt="Data Management">
+            </div>
+            <div class="progress-container">
+                <p>Data Management</p>
+                <div class="progress-bar">
+                    <div style="width: 80%;" data-value="80">80%</div>
+                </div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" alt="Microsoft Office">
+            </div>
+            <div class="progress-container">
+                <p>Microsoft Office</p>
+                <div class="progress-bar">
+                    <div style="width: 90%;" data-value="90">90%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<h2 data-aos="fade-in" id="portfolio">Portfolio</h2>
+
+<div class="portfolio">
+    <div class="portfolio-item">
+        <img src="1.jpeg" alt="Image 1" class="portfolio-image">
+        <div class="overlay">
+            <p class="click-text">Click</p>
+        </div>
+    </div>
+    <div class="portfolio-item">
+        <img src="2.png" alt="Image 2" class="portfolio-image">
+        <div class="overlay">
+            <p class="click-text">Click</p>
+        </div>
+    </div>
+    <div class="portfolio-item">
+        <img src="3.jpeg" alt="Image 3" class="portfolio-image">
+        <div class="overlay">
+            <p class="click-text">Click</p>
+        </div>
+    </div>
+</div>
+
+<!-- Pop-up -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <img id="popup-image" src="" alt="Popup Image" class="popup-image">
+    </div>
+</div>
+
+
+
+    <h2 data-aos="fade-in" id="contact">Follow Me On Social Media</h2>
+<div class="social-links" style="text-align: center; margin-top: 20px;">
+<a href="https://www.linkedin.com/in/dellya-utami-putri-5b9698220/" target="_blank" class="social-button" style="margin: 0 15px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="social-icon" />
+</a>
+<a href="https://www.instagram.com/dell.yaa" target="_blank" class="social-button" style="margin: 0 15px;">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" class="social-icon" />
+</a>
+</div>
+
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <img id="popup-img" src="" alt="Popup Image">
+</div>
+
+<footer>
+    <p>&copy; 2025 Dellya Putri. All rights reserved.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+
+ document.addEventListener("DOMContentLoaded", function() {
+    const image = document.getElementById('image');
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('closePopup');
+    const popupImage = document.getElementById('popupImage');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    // Fungsi untuk menampilkan pop-up gambar
+    function openPopup(imageSrc) {
+        popupImage.src = imageSrc;
+        popup.style.display = "flex"; // Menampilkan pop-up
+    }
+
+    // Menutup pop-up
+    function closePopupFunc() {
+        popup.style.display = "none"; // Menyembunyikan pop-up
+    }
+
+    // Event listener untuk menampilkan pop-up saat gambar diklik
+    image.addEventListener('click', () => {
+        openPopup(image.src);
+    });
+
+    // Menutup pop-up saat tombol close diklik
+    closePopup.addEventListener('click', closePopupFunc);
+
+    // Menutup pop-up jika area luar gambar diklik
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopupFunc();
+        }
+    });
+
+    // Menambahkan event listener untuk setiap gambar portofolio
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const imageSrc = item.querySelector('img').src;
+            openPopup(imageSrc);
+        });
+    });
+
+    // Menutup pop-up jika area luar gambar portofolio diklik
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closePopupFunc();
+        }
+    });
+
+    // Jika ada hamburger menu dan sticky navbar, pastikan tetap bekerja
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+    const links = document.querySelectorAll(".menu a");
+
+    hamburger.addEventListener("click", () => {
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    });
+
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            menu.style.display = "none";
+        });
+    });
+
+    const header = document.getElementById("header");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 0) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+    // Progress bar animation
+    document.querySelectorAll(".progress-bar > div").forEach(bar => {
+        const value = parseInt(bar.getAttribute("data-value"), 10);
+        let count = 0;
+        const interval = setInterval(() => {
+            if (count <= value) {
+                bar.textContent = `${count}%`;
+                bar.style.width = `${count}%`;
+                count++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 60);
+    });
+
+    // Smooth scrolling for menu items
+    document.querySelectorAll('.menu a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            window.scrollTo({
+                top: targetElement.offsetTop - 60,  // Adjust scroll position
+                behavior: 'smooth'
+            });
+            menu.style.display = "none"; // Close menu after click
+        });
+    });
+});
+
+
+
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+
+
+</script>
+
+</body>
+</html>
