@@ -689,14 +689,12 @@ html {
     background-color: rgba(255, 0, 119, 0.7); /* Warna pink dengan transparansi */
     color: white;
     border: none;
-    border-radius: 10px; /* Membuat sudut sedikit membulat (oval) */
-    font-size: 20px;
-    width: 40px; /* Lebar tombol */
-    height: 40px; /* Tinggi tombol */
-    display: none; /* Tombol disembunyikan secara default */
-    align-items: center;
+    border-radius: 8px; /* Tombol dengan sudut yang lebih kecil (kotak dengan sedikit melengkung) */
+    width: 40px; /* Lebar tombol lebih kecil */
+    height: 40px; /* Tinggi tombol lebih kecil */
+    display: flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     z-index: 999; /* Pastikan tombol berada di atas elemen lainnya */
@@ -709,23 +707,19 @@ html {
     transform: scale(1.1); /* Efek membesar saat hover */
 }
 
-/* Mengatur simbol ^ agar lebih terpusat */
+/* Menyesuaikan simbol ^ agar lebih kecil dan sejajar dengan tombol */
 .scroll-to-top::before {
     content: '^'; /* Menampilkan simbol */
-    font-size: 40px;
+    font-size: 18px; /* Ukuran font untuk simbol lebih kecil */
     font-weight: bold;
-    display: block;
-    line-height: 50px; /* Menjaga simbol tetap di tengah secara vertikal */
+    display: inline-block;
     text-align: center;
+    line-height: 1; /* Menjaga simbol sejajar secara vertikal */
+    vertical-align: middle; /* Menjaga simbol tetap di tengah secara vertikal */
 }
 
-/* Menyesuaikan posisi tombol scroll agar sejajar dengan hamburger */
-@media screen and (max-width: 768px) {
-    .scroll-to-top {
-        bottom: 100px; /* Mengatur jarak dari bawah untuk sejajar dengan hamburger */
-        right: 20px; /* Sesuaikan dengan posisi hamburger */
-    }
-}
+
+
 
 
 
