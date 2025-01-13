@@ -607,6 +607,81 @@ html {
     cursor: pointer;
 }
 
+/* Container untuk Deskripsi */
+.container {
+    padding-top: 50px; /* Memberikan jarak lebih antara bagian atas container dan konten */
+    padding-bottom: 50px; /* Memberikan jarak di bawah container */
+}
+
+/* Menambahkan margin pada Skills untuk memberi jarak dari Career */
+#skills {
+    margin-bottom: 40px; /* Memberikan jarak antara skills dan career section */
+}
+
+/* Career Tree */
+.career-tree {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr; /* Kolom kiri, konektor, dan kanan */
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    margin-top: 40px; /* Memberikan jarak atas pada bagian Career */
+}
+
+/* Bagian Career Node */
+.career-node {
+    padding: 20px;
+    border: 2px solid #ff0077; /* Warna kotak menjadi pink */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Konektor Career */
+.connector {
+    width: 4px;
+    height: 100px;
+    background-color: #ff0077; /* Warna garis menjadi pink */
+    margin: auto;
+    position: relative;
+}
+
+/* Container Skill */
+.skills-grid {
+    margin-bottom: 40px; /* Memberikan jarak bawah setelah Skills */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .career-tree {
+        grid-template-columns: 1fr; /* Semua dalam satu kolom */
+        justify-items: center;
+    }
+
+    .connector {
+        display: block; /* Menampilkan garis tengah pada mobile */
+        width: 4px;
+        height: 40px;
+        background-color: #ff0077; /* Warna garis menjadi pink */
+        margin: 20px auto;
+    }
+
+    .career-node {
+        text-align: center;
+    }
+
+    .career-node.left {
+        text-align: center; /* Mengubah agar lebih rapi di mobile */
+    }
+
+    .career-node.right {
+        text-align: center; /* Mengubah agar lebih rapi di mobile */
+    }
+}
+
+
 
 
 
@@ -717,6 +792,34 @@ html {
             </div>
         </div>
     </div>
+	
+	<div class="container">
+    <!-- Story My Career Section -->
+    <h2 data-aos="fade-in">Story My Career</h2>
+    <div class="career-tree" data-aos="fade-up" data-aos-delay="200">
+        <!-- Kiri (Tax Staff - PT Panen Artha Nusa) -->
+        <div class="career-node left">
+            <div class="job">
+                <div class="job-title">Tax Staff</div>
+                <div class="job-company">PT Panen Artha Nusa</div>
+                <div class="job-period">2024 - Now</div>
+            </div>
+        </div>
+        
+        <!-- Konektor (Garis Penghubung) -->
+        <div class="connector"></div>
+        
+        <!-- Kanan (Tax Assistant - PT Thabitha Indonesia) -->
+        <div class="career-node right">
+            <div class="job">
+                <div class="job-title">Tax Assistant</div>
+                <div class="job-company">PT Thabitha Indonesia</div>
+                <div class="job-period">2022 - 2024</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <h2 data-aos="fade-in" id="portfolio">Portfolio</h2>
 
@@ -778,115 +881,126 @@ html {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
 
- document.addEventListener("DOMContentLoaded", function() {
-    const image = document.getElementById('image');
-    const popup = document.getElementById('popup');
-    const closePopup = document.getElementById('closePopup');
-    const popupImage = document.getElementById('popupImage');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
+ document.addEventListener("DOMContentLoaded", function () {
+    const image = document.getElementById("image");
+    const popup = document.getElementById("popup");
+    const closePopup = document.getElementById("closePopup");
+    const popupImage = document.getElementById("popupImage");
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+
     // Fungsi untuk menampilkan pop-up gambar
     function openPopup(imageSrc) {
-        popupImage.src = imageSrc;
-        popup.style.display = "flex"; // Menampilkan pop-up
+        if (popupImage && popup) {
+            popupImage.src = imageSrc;
+            popup.style.display = "flex"; // Menampilkan pop-up
+        }
     }
 
-    // Menutup pop-up
+    // Fungsi untuk menutup pop-up
     function closePopupFunc() {
-        popup.style.display = "none"; // Menyembunyikan pop-up
+        if (popup) {
+            popup.style.display = "none"; // Menyembunyikan pop-up
+        }
     }
 
     // Event listener untuk menampilkan pop-up saat gambar diklik
-    image.addEventListener('click', () => {
-        openPopup(image.src);
-    });
+    if (image) {
+        image.addEventListener("click", () => {
+            openPopup(image.src);
+        });
+    }
 
     // Menutup pop-up saat tombol close diklik
-    closePopup.addEventListener('click', closePopupFunc);
+    if (closePopup) {
+        closePopup.addEventListener("click", closePopupFunc);
+    }
 
     // Menutup pop-up jika area luar gambar diklik
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopupFunc();
-        }
-    });
-
-    // Menambahkan event listener untuk setiap gambar portofolio
-    portfolioItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const imageSrc = item.querySelector('img').src;
-            openPopup(imageSrc);
+    if (popup) {
+        popup.addEventListener("click", (e) => {
+            if (e.target === popup) {
+                closePopupFunc();
+            }
         });
-    });
+    }
 
-    // Menutup pop-up jika area luar gambar portofolio diklik
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopupFunc();
+    // Event listener untuk setiap gambar portofolio
+    portfolioItems.forEach((item) => {
+        const img = item.querySelector("img");
+        if (img) {
+            item.addEventListener("click", () => {
+                openPopup(img.src);
+            });
         }
     });
 
-    // Jika ada hamburger menu dan sticky navbar, pastikan tetap bekerja
+    // Event listener untuk hamburger menu (jika ada)
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
     const links = document.querySelectorAll(".menu a");
 
-    hamburger.addEventListener("click", () => {
-        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    });
-
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            menu.style.display = "none";
+    if (hamburger && menu) {
+        hamburger.addEventListener("click", () => {
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         });
-    });
 
+        links.forEach((link) => {
+            link.addEventListener("click", () => {
+                menu.style.display = "none";
+            });
+        });
+    }
+
+    // Sticky header saat scroll
     const header = document.getElementById("header");
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 0) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 0) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+    }
+
+    // Progress bar animation
+    document.querySelectorAll(".progress-bar > div").forEach((bar) => {
+        const value = parseInt(bar.getAttribute("data-value"), 10);
+        if (!isNaN(value)) {
+            let count = 0;
+            const interval = setInterval(() => {
+                if (count <= value) {
+                    bar.textContent = `${count}%`;
+                    bar.style.width = `${count}%`;
+                    count++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 60);
         }
     });
 
-    // Progress bar animation
-    document.querySelectorAll(".progress-bar > div").forEach(bar => {
-        const value = parseInt(bar.getAttribute("data-value"), 10);
-        let count = 0;
-        const interval = setInterval(() => {
-            if (count <= value) {
-                bar.textContent = `${count}%`;
-                bar.style.width = `${count}%`;
-                count++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 60);
-    });
-
-    // Smooth scrolling for menu items
-    document.querySelectorAll('.menu a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+    // Smooth scrolling untuk anchor link
+    document.querySelectorAll(".menu a").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
+            const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
-            window.scrollTo({
-                top: targetElement.offsetTop - 60,  // Adjust scroll position
-                behavior: 'smooth'
-            });
-            menu.style.display = "none"; // Close menu after click
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 60, // Penyesuaian posisi scroll
+                    behavior: "smooth",
+                });
+            }
         });
     });
-});
 
-
-
+    // Inisialisasi AOS
     AOS.init({
         duration: 1000,
         once: true,
     });
-
+});
 
 </script>
 
