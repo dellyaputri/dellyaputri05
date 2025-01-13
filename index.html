@@ -924,7 +924,7 @@ html {
 
 
 <footer>
-    <p>&copy; 2025 Dellya Putri. All rights reserved.</p>
+    <p>&copy; <span id="currentYear"></span> Dellya Putri. All rights reserved.</p>
 </footer>
 
 <!-- Tombol Scroll ke Atas -->
@@ -1071,6 +1071,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+	
+    // Perbarui Tahun Secara Otomatis di Footer
+    const currentYear = new Date().getFullYear(); // Mendapatkan tahun saat ini
+    const yearElement = document.getElementById("currentYear");
+    if (yearElement) {
+        yearElement.textContent = currentYear; // Menampilkan tahun pada elemen dengan ID 'currentYear'
+    }
+
 
     // Inisialisasi AOS
     AOS.init({
