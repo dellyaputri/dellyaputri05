@@ -681,6 +681,52 @@ html {
     }
 }
 
+/* Tombol Scroll ke Atas */
+.scroll-to-top {
+    position: fixed;
+    bottom: 100px; /* Jarak dari bawah untuk sejajar dengan hamburger */
+    right: 20px; /* Jarak dari kanan */
+    background-color: rgba(255, 0, 119, 0.7); /* Warna pink dengan transparansi */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Membuat sudut sedikit membulat (oval) */
+    font-size: 20px;
+    width: 40px; /* Lebar tombol */
+    height: 40px; /* Tinggi tombol */
+    display: none; /* Tombol disembunyikan secara default */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Pastikan tombol berada di atas elemen lainnya */
+    transition: all 0.3s ease; /* Menambahkan efek transisi */
+}
+
+/* Posisi dan efek saat hover */
+.scroll-to-top:hover {
+    background-color: rgba(255, 0, 119, 1); /* Warna saat hover lebih terang */
+    transform: scale(1.1); /* Efek membesar saat hover */
+}
+
+/* Mengatur simbol ^ agar lebih terpusat */
+.scroll-to-top::before {
+    content: '^'; /* Menampilkan simbol */
+    font-size: 40px;
+    font-weight: bold;
+    display: block;
+    line-height: 50px; /* Menjaga simbol tetap di tengah secara vertikal */
+    text-align: center;
+}
+
+/* Menyesuaikan posisi tombol scroll agar sejajar dengan hamburger */
+@media screen and (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 100px; /* Mengatur jarak dari bawah untuk sejajar dengan hamburger */
+        right: 20px; /* Sesuaikan dengan posisi hamburger */
+    }
+}
+
 
 
 
@@ -688,6 +734,8 @@ html {
     </style>
 </head>
 <body>
+
+
 
 <header id="header">
     <div class="navbar">
@@ -809,11 +857,11 @@ html {
         <!-- Konektor (Garis Penghubung) -->
         <div class="connector"></div>
         
-        <!-- Kanan (Tax Assistant - PT Thabitha Indonesia) -->
+        <!-- Kanan (Tax Assistant - PT Tabitha Indonesia) -->
         <div class="career-node right">
             <div class="job">
-                <div class="job-title">Tax Assistant</div>
-                <div class="job-company">PT Thabitha Indonesia</div>
+                <div class="job-title">Tax Staff</div>
+                <div class="job-company">PT Tabitha Indonesia</div>
                 <div class="job-period">2022 - 2024</div>
             </div>
         </div>
@@ -864,7 +912,12 @@ html {
 </a>
 </div>
 
+
+
 </div>
+
+
+
 
 <!-- Popup -->
 <div class="popup" id="popup">
@@ -872,21 +925,30 @@ html {
     <img id="popup-img" src="" alt="Popup Image">
 </div>
 
+
+
+
+
 <footer>
     <p>&copy; 2025 Dellya Putri. All rights reserved.</p>
 </footer>
+
+<!-- Tombol Scroll ke Atas -->
+<button id="scrollToTopBtn" class="scroll-to-top"></button>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
 
- document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("image");
     const popup = document.getElementById("popup");
     const closePopup = document.getElementById("closePopup");
     const popupImage = document.getElementById("popupImage");
     const portfolioItems = document.querySelectorAll(".portfolio-item");
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
     // Fungsi untuk menampilkan pop-up gambar
     function openPopup(imageSrc) {
@@ -988,12 +1050,33 @@ html {
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 60, // Penyesuaian posisi scroll
+                    top: targetElement.offsetTop - 60,
                     behavior: "smooth",
                 });
             }
         });
     });
+
+    // Tombol Scroll ke Atas
+    if (scrollToTopBtn) {
+        // Menambahkan event listener untuk memeriksa scroll
+        window.addEventListener("scroll", function () {
+            // Memeriksa jika posisi scroll sudah lebih dari 100px
+            if (window.scrollY > 100) {
+                scrollToTopBtn.style.display = "block"; // Menampilkan tombol
+            } else {
+                scrollToTopBtn.style.display = "none"; // Menyembunyikan tombol
+            }
+        });
+
+        // Fungsi untuk scroll ke atas saat tombol diklik
+        scrollToTopBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // Efek scroll halus ke atas
+            });
+        });
+    }
 
     // Inisialisasi AOS
     AOS.init({
@@ -1001,6 +1084,8 @@ html {
         once: true,
     });
 });
+
+
 
 </script>
 
