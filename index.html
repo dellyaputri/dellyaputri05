@@ -762,8 +762,9 @@ html {
     </div>
 	
     <h2 data-aos="fade-in">Hi, I'm Dellya, a Tax Specialist from Jakarta</h2>
-    <p data-aos="fade-in" data-aos-delay="200">“Currently 25 years old with expertise in Taxation and Accounting. I hold a degree in Accounting from the Indonesia Banking School.I am passionate about providing accurate and impactful financial solutions, especially in corporate tax management, to support your business success. Thank you for visiting my personal website"</p>
-
+	    <p data-aos="fade-in" data-aos-delay="200">
+        “Currently <span id="dynamic-age">25</span> years old with expertise in Taxation and Accounting. I hold a degree in Accounting from the Indonesia Banking School. I am passionate about providing accurate and impactful financial solutions, especially in corporate tax management, to support your business success. Thank you for visiting my personal website."
+    </p>
     <h2 data-aos="fade-in" id="skills">Skills</h2>
 
     <div class="skills-grid" data-aos="fade-in" data-aos-delay="600">
@@ -1071,7 +1072,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-	
+    
     // Perbarui Tahun Secara Otomatis di Footer
     const currentYear = new Date().getFullYear(); // Mendapatkan tahun saat ini
     const yearElement = document.getElementById("currentYear");
@@ -1079,6 +1080,22 @@ document.addEventListener("DOMContentLoaded", function () {
         yearElement.textContent = currentYear; // Menampilkan tahun pada elemen dengan ID 'currentYear'
     }
 
+    // Perbarui usia berdasarkan tahun kelahiran
+    const birthYear = 1999; // Tahun kelahiran
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth(); // Januari = 0, Desember = 11
+    let age = currentDate.getFullYear() - birthYear;
+
+    // Periksa apakah bulan saat ini sebelum Desember
+    if (currentMonth < 11) {
+        age -= 1; // Belum ulang tahun tahun ini
+    }
+
+    // Masukkan usia ke elemen dengan ID 'dynamic-age'
+    const ageElement = document.getElementById("dynamic-age");
+    if (ageElement) {
+        ageElement.textContent = age;
+    }
 
     // Inisialisasi AOS
     AOS.init({
@@ -1086,7 +1103,6 @@ document.addEventListener("DOMContentLoaded", function () {
         once: true,
     });
 });
-
 
 
 </script>
