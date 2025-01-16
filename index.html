@@ -648,6 +648,46 @@ html {
     position: relative;
 }
 
+/* Gaya untuk logo di dalam Career Node */
+.career-node img {
+    width: 100px; /* Lebar logo */
+    height: auto; /* Menjaga rasio aspek logo */
+    margin-bottom: 15px; /* Jarak antara logo dan teks */
+    border-radius: 8px; /* Sudut sedikit membulat */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek hover */
+}
+
+/* Efek hover pada logo */
+.career-node img:hover {
+    transform: scale(1.1); /* Memperbesar logo saat di-hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bayangan saat hover */
+}
+
+/* Responsivitas logo untuk layar kecil */
+@media (max-width: 768px) {
+    .career-node img {
+        width: 80px; /* Ukuran logo lebih kecil untuk layar kecil */
+    }
+}
+
+@media (max-width: 480px) {
+    .career-node img {
+        width: 70px; /* Ukuran logo lebih kecil untuk ponsel */
+    }
+}
+
+/* Gaya untuk logo "Panen Artha Nusa" */
+.career-node img.small-logo {
+    width: 32px; /* Lebar logo yang lebih kecil */
+    height: auto; /* Menjaga rasio aspek */
+    margin-bottom: 15px; /* Jarak bawah logo */
+    border-radius: 8px; /* Sudut sedikit membulat */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efek hover */
+}
+
+
+
+
 /* Container Skill */
 .skills-grid {
     margin-bottom: 40px; /* Memberikan jarak bawah setelah Skills */
@@ -836,24 +876,30 @@ html {
         </div>
     </div>
 	
-	<div class="container">
+<div class="container">
     <!-- Story My Career Section -->
     <h2 data-aos="fade-in">Story My Career</h2>
     <div class="career-tree" data-aos="fade-up" data-aos-delay="200">
         <!-- Kiri (Tax Staff - PT Panen Artha Nusa) -->
         <div class="career-node left">
+            <a href="https://paniaga.com/" target="_blank">
+                <img class="small-logo" src="https://img.lokercepat.id/files/pt-pandu-artha-nusantara-216.jpg" alt="Logo PT Panen Artha Nusa">
+            </a>
             <div class="job">
                 <div class="job-title">Tax Staff</div>
                 <div class="job-company">PT Panen Artha Nusa</div>
                 <div class="job-period">2024 - Now</div>
             </div>
         </div>
-        
+
         <!-- Konektor (Garis Penghubung) -->
         <div class="connector"></div>
-        
-        <!-- Kanan (Tax Assistant - PT Tabitha Indonesia) -->
+
+        <!-- Kanan (Tax Staff - PT Tabitha Indonesia) -->
         <div class="career-node right">
+            <a href="https://tabitha.com/" target="_blank">
+                <img src="https://tabitha.com/wp-content/uploads/2019/09/Holding-Group.png" alt="Logo PT Tabitha Indonesia">
+            </a>
             <div class="job">
                 <div class="job-title">Tax Staff</div>
                 <div class="job-company">PT Tabitha Indonesia</div>
@@ -862,6 +908,7 @@ html {
         </div>
     </div>
 </div>
+
 
 
 <h2 data-aos="fade-in" id="portfolio">Portfolio</h2>
