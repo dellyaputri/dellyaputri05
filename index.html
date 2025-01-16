@@ -724,39 +724,39 @@ html {
 /* Tombol Scroll ke Atas */
 .scroll-to-top {
     position: fixed;
-    bottom: 100px; /* Jarak dari bawah untuk sejajar dengan hamburger */
+    bottom: 100px; /* Jarak dari bawah */
     right: 20px; /* Jarak dari kanan */
     background-color: rgba(255, 0, 119, 0.7); /* Warna pink dengan transparansi */
     color: white;
     border: none;
-    border-radius: 8px; /* Tombol dengan sudut yang lebih kecil (kotak dengan sedikit melengkung) */
-    width: 40px; /* Lebar tombol lebih kecil */
-    height: 40px; /* Tinggi tombol lebih kecil */
-    display: flex;
+    border-radius: 8px; /* Tombol dengan sudut kecil */
+    width: 40px; /* Lebar tombol */
+    height: 40px; /* Tinggi tombol */
+    display: none; /* Awalnya disembunyikan */
     justify-content: center;
     align-items: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     z-index: 999; /* Pastikan tombol berada di atas elemen lainnya */
-    transition: all 0.3s ease; /* Menambahkan efek transisi */
+    transition: all 0.3s ease; /* Efek transisi */
 }
 
-/* Posisi dan efek saat hover */
+/* Efek hover */
 .scroll-to-top:hover {
-    background-color: rgba(255, 0, 119, 1); /* Warna saat hover lebih terang */
-    transform: scale(1.1); /* Efek membesar saat hover */
+    background-color: rgba(255, 0, 119, 1); /* Warna lebih terang */
+    transform: scale(1.1); /* Membesar saat hover */
 }
 
-/* Menyesuaikan simbol ^ agar lebih kecil dan sejajar dengan tombol */
+/* Simbol tanda panah */
 .scroll-to-top::before {
-    content: '^'; /* Menampilkan simbol */
-    font-size: 18px; /* Ukuran font untuk simbol lebih kecil */
+    content: '^'; /* Simbol panah */
+    font-size: 18px; /* Ukuran font simbol */
     font-weight: bold;
-    display: inline-block;
     text-align: center;
-    line-height: 1; /* Menjaga simbol sejajar secara vertikal */
-    vertical-align: middle; /* Menjaga simbol tetap di tengah secara vertikal */
+    line-height: 1;
+    vertical-align: middle;
 }
+
 
 
 
@@ -991,6 +991,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const popupImage = document.getElementById("popupImage");
     const portfolioItems = document.querySelectorAll(".portfolio-item");
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    const typingText = document.getElementById("typing-text");
+    const textContent = typingText ? typingText.textContent : ""; // Mendapatkan teks dari elemen
+    let isTyping = true; // Status pengetikan (true saat mengetik)
 
     // Fungsi untuk menampilkan pop-up gambar
     function openPopup(imageSrc) {
@@ -1101,73 +1104,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Tombol Scroll ke Atas
     if (scrollToTopBtn) {
-        // Menambahkan event listener untuk memeriksa scroll
-        window.addEventListener("scroll", function () {
-            // Memeriksa jika posisi scroll sudah lebih dari 100px
-            if (window.scrollY > 100) {
-                scrollToTopBtn.style.display = "block"; // Menampilkan tombol
+        function checkScrollButton() {
+            // Tombol hanya muncul jika scroll > 150 dan tidak sedang mengetik
+            if (!isTyping && window.scrollY > 120) {
+                scrollToTopBtn.style.display = "block";
             } else {
-                scrollToTopBtn.style.display = "none"; // Menyembunyikan tombol
+                scrollToTopBtn.style.display = "none";
             }
-        });
+        }
+
+        // Event listener untuk memeriksa scroll
+        window.addEventListener("scroll", checkScrollButton);
 
         // Fungsi untuk scroll ke atas saat tombol diklik
         scrollToTopBtn.addEventListener("click", function () {
             window.scrollTo({
                 top: 0,
-                behavior: "smooth" // Efek scroll halus ke atas
+                behavior: "smooth", // Efek scroll halus ke atas
             });
         });
     }
-    
+
+    // Efek Ketik Teks "Hi, I'm Dellya"
+    if (typingText) {
+        typingText.textContent = ""; // Menghapus teks awal
+        let index = 0;
+        const typingSpeed = 50; // Kecepatan ketik dalam milidetik
+
+        function typeWriter() {
+            if (index < textContent.length) {
+                typingText.textContent += textContent.charAt(index); // Menambah karakter satu per satu
+                index++;
+                setTimeout(typeWriter, typingSpeed); // Memanggil fungsi ini lagi dengan jeda
+            } else {
+                isTyping = false; // Pengetikan selesai
+            }
+        }
+
+        typeWriter();
+    }
+
     // Perbarui Tahun Secara Otomatis di Footer
-    const currentYear = new Date().getFullYear(); // Mendapatkan tahun saat ini
+    const currentYear = new Date().getFullYear();
     const yearElement = document.getElementById("currentYear");
     if (yearElement) {
-        yearElement.textContent = currentYear; // Menampilkan tahun pada elemen dengan ID 'currentYear'
+        yearElement.textContent = currentYear;
     }
 
     // Perbarui usia berdasarkan tahun kelahiran
-    const birthYear = 1999; // Tahun kelahiran
+    const birthYear = 1999;
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth(); // Januari = 0, Desember = 11
     let age = currentDate.getFullYear() - birthYear;
-
-    // Periksa apakah bulan saat ini sebelum Desember
     if (currentMonth < 11) {
         age -= 1; // Belum ulang tahun tahun ini
     }
 
-    // Masukkan usia ke elemen dengan ID 'dynamic-age'
     const ageElement = document.getElementById("dynamic-age");
     if (ageElement) {
         ageElement.textContent = age;
     }
-	
-	const typingText = document.getElementById("typing-text");
-    const textContent = typingText.textContent; // Mendapatkan teks dari elemen
-    typingText.textContent = ""; // Menghapus teks awal
-
-    let index = 0;
-    const typingSpeed = 50; // Kecepatan ketik dalam milidetik
-
-    // Fungsi untuk mengetik teks
-    function typeWriter() {
-        if (index < textContent.length) {
-            typingText.textContent += textContent.charAt(index); // Menambah karakter satu per satu
-            index++;
-            setTimeout(typeWriter, typingSpeed); // Memanggil fungsi ini lagi dengan jeda
-        }
-    }
-	
-    // Memulai efek ketik
-    typeWriter();
 
     // Inisialisasi AOS
     AOS.init({
         duration: 1000,
         once: true,
-    });	
+    });
 });
 
 </script>
