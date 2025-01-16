@@ -1143,22 +1143,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (ageElement) {
         ageElement.textContent = age;
     }
-
-    // Inisialisasi AOS
-    AOS.init({
-        duration: 1000,
-        once: true,
-    });
 	
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const typingText = document.getElementById("typing-text");
+	const typingText = document.getElementById("typing-text");
     const textContent = typingText.textContent; // Mendapatkan teks dari elemen
     typingText.textContent = ""; // Menghapus teks awal
 
     let index = 0;
-    const typingSpeed = 100; // Kecepatan ketik dalam milidetik
+    const typingSpeed = 50; // Kecepatan ketik dalam milidetik
 
     // Fungsi untuk mengetik teks
     function typeWriter() {
@@ -1168,9 +1159,15 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(typeWriter, typingSpeed); // Memanggil fungsi ini lagi dengan jeda
         }
     }
-
+	
     // Memulai efek ketik
     typeWriter();
+
+    // Inisialisasi AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });	
 });
 
 </script>
